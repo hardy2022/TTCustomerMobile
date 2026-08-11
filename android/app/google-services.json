@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "370715129473",
+    "project_id": "trendtoday-80b44",
+    "storage_bucket": "trendtoday-80b44.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370715129473:android:bb7e6363a23874d7147f80",
+        "android_client_info": {
+          "package_name": "com.modern365.trendtoday"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcSgiUA0P9F2k0go1IottVNQsBtwBcPho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370715129473:android:82c29266206af3d8147f80",
+        "android_client_info": {
+          "package_name": "com.modern365.trendtodayvendor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcSgiUA0P9F2k0go1IottVNQsBtwBcPho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'dev.flutter.flutter-gradle-plugin'
+apply plugin: 'com.google.gms.google-services' // Required for Firebase
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = new File("key.properties")
+
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    println(">>> storeFile = '${keystoreProperties['storeFile']}'")
+    println(">>> keyAlias = '${keystoreProperties['keyAlias']}'")
+    println(">>> file exists? = ${rootProject.file(keystoreProperties['storeFile']).exists()}")
+} else {
+    throw new GradleException("Missing key.properties file.")
+}
+
+android {
+    namespace = "com.modern365.trendtoday"
+    compileSdk = 36
+    ndkVersion = flutter.ndkVersion
+
+    defaultConfig {
+        applicationId "com.modern365.trendtoday"
+        minSdkVersion = 26
+        targetSdk = 36
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile rootProject.file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation 'com.google.firebase:firebase-messaging:23.4.0'
+}
