@@ -67,7 +67,7 @@ class _CartServicesPageState extends State<CartServices> {
       options: Options(
         headers: {
           'Authorization':
-              'Bearer sk_test_51QMStvKnbJCaiQXSUvDWnfa6w0QV0eb8Uci5AUlrSyIXqYMFRPuVy4TKKHGt8m28tZfvKlDhlicLdDZVBNylXQFB00iwno7phi',
+              'Bearer ...',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
       ),
