@@ -801,7 +801,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Color(0xFFA773F7),
+                    color: Colors.black,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
@@ -854,12 +854,8 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: Color(0xFFF3E8FF),
+              color: Colors.black,
               shape: BoxShape.circle,
-              border: Border.all(
-                color: Color(0xFFA773F7).withOpacity(0.2),
-                width: 1.5,
-              ),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.06),
@@ -887,7 +883,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                 borderRadius: BorderRadius.circular(18),
                 child: Icon(
                   Icons.edit_rounded,
-                  color: Color(0xFFA773F7),
+                  color: Colors.white,
                   size: 16,
                 ),
               ),
@@ -977,7 +973,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: Color(0xFFA773F7),
+              color: Colors.black,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(

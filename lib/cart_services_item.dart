@@ -152,13 +152,13 @@ class CartServicesItem extends StatelessWidget {
                     return Container(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
-                        color: Color(0xFFF3E8FF),
+                        color: Colors.black,
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
                         service,
                         style: TextStyle(
-                          color: Color(0xFFA773F7),
+                          color: Colors.white,
                           fontSize: 10,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,

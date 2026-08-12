@@ -890,25 +890,16 @@ class _GlowHomePageState extends State<GlowHomePage> {
         statusBarBrightness: Brightness.dark,
       ),
       child: Scaffold(
-        backgroundColor: Colors.black, // Very light orange (orange-50)
+        backgroundColor: Color(0xFFFAFAFA),
         body: _isLoading
             ? _buildSkeletonLoader()
             : Stack(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height * 0.45,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        stops: [0.0, 0.4, 1.0],
-                        colors: [
-                          Color(0xFFA773F7),
-                          Colors.black,
-                          Colors.black,
-                        ],
-                      ),
+                      color: Colors.black,
                     ),
                     child: Stack(
                       children: [
@@ -950,9 +941,19 @@ class _GlowHomePageState extends State<GlowHomePage> {
                                   padding: const EdgeInsets.symmetric(horizontal: 0.0),
                                   child: _buildSegmentedControl(),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 8.0),
-                                  child: _buildContent(),
+                                Container(
+                                  margin: EdgeInsets.only(top: 16),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFFAFAFA),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(30),
+                                      topRight: Radius.circular(30),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 8.0, bottom: 40.0),
+                                    child: _buildContent(),
+                                  ),
                                 ),
                               ],
                             ),
@@ -1146,7 +1147,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.05),
+                    color: Colors.black,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -1155,7 +1156,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                       Container(
                         padding: EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          color: Color(0xFFA773F7).withOpacity(0.15),
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Icon(
@@ -1286,7 +1287,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
             Icon(
               icon,
               size: 16,
-              color: isSelected ? Colors.white : Colors.white54,
+              color: isSelected ? Color(0xFFA773F7) : Color(0xFF6B7280),
             ),
             SizedBox(width: 6),
             Flexible(
@@ -1296,7 +1297,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                   fontFamily: "Poppins",
                   fontSize: 12,
                   fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                  color: isSelected ? Colors.white : Colors.white54,
+                  color: isSelected ? Color(0xFFA773F7) : Color(0xFF6B7280),
                   letterSpacing: -0.2,
                 ),
                 textAlign: TextAlign.center,
@@ -1322,7 +1323,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
             Container(
               margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 8, bottom: 8),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
@@ -1348,7 +1349,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                     decoration: BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
-                          color: Colors.white.withOpacity(0.05),
+                          color: Colors.grey.withOpacity(0.2),
                           width: 1,
                         ),
                       ),
@@ -1372,7 +1373,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                               fontSize: 20,
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w800,
-                              color: Colors.white,
+                              color: Color(0xFF1F2937),
                               letterSpacing: -0.8,
                               height: 1.2,
                             ),
@@ -1436,10 +1437,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
               margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 12, bottom: 8),
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.grey.withOpacity(0.2),
                   width: 1,
                 ),
                 boxShadow: [
@@ -1459,12 +1460,12 @@ class _GlowHomePageState extends State<GlowHomePage> {
                       Container(
                         padding: EdgeInsets.all(6),
                         decoration: BoxDecoration(
-                          color: Color(0xFFA773F7).withOpacity(0.15),
+                          color: Colors.black,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Icon(
                           Icons.calendar_today_rounded,
-                          color: Color(0xFFA773F7),
+                          color: Colors.white,
                           size: 18,
                         ),
                       ),
@@ -1475,7 +1476,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                           fontSize: 16,
                   fontFamily: "Poppins",
                           fontWeight: FontWeight.w700,
-                          color: Colors.white,
+                          color: Color(0xFF1F2937),
                           letterSpacing: -0.4,
                 ),
               ),
@@ -1523,11 +1524,11 @@ class _GlowHomePageState extends State<GlowHomePage> {
                   Container(
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Color(0xFFA773F7).withOpacity(0.15),
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFFA773F7).withOpacity(0.3),
+                          color: Colors.black.withOpacity(0.1),
                           blurRadius: 8,
                           offset: Offset(0, 2),
                         ),
@@ -1550,7 +1551,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                             fontSize: 16,
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.w800,
-                            color: Colors.white,
+                            color: Color(0xFF1F2937),
                             letterSpacing: -0.5,
                             height: 1.2,
                           ),
@@ -1562,7 +1563,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                             fontSize: 13,
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.w500,
-                            color: Colors.white54,
+                            color: Color(0xFF6B7280),
                             letterSpacing: -0.1,
                             height: 1.4,
                           ),
@@ -1579,10 +1580,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
                   left: 20.0, right: 20.0, top: 0, bottom: 0),
               padding: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.05),
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.grey.withOpacity(0.2),
                   width: 1,
                 ),
               ),
@@ -1613,10 +1614,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
                         left: 20.0, right: 20.0, top: 12, bottom: 0),
                     padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.4),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.1),
+                        color: Colors.grey.withOpacity(0.2),
                         width: 1,
                       ),
                       boxShadow: [
@@ -1652,7 +1653,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                               fontSize: 16,
                               fontFamily: "Poppins",
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: Color(0xFF1F2937),
                                 letterSpacing: -0.4,
                             ),
                           ),
@@ -1775,22 +1776,8 @@ class _GlowHomePageState extends State<GlowHomePage> {
               width: double.infinity,
               height: 56,
               decoration: BoxDecoration(
-                color: Color(0xFFA773F7).withOpacity(0.15),
+                color: Color(0xFFA773F7),
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFFA773F7).withOpacity(0.4),
-                    blurRadius: 16,
-                    offset: Offset(0, 8),
-                    spreadRadius: 0,
-                  ),
-                  BoxShadow(
-                    color: Color(0xFFA773F7).withOpacity(0.2),
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
-                    spreadRadius: 0,
-                  ),
-                ],
               ),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -1950,9 +1937,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
                       children: [
                         SizedBox(height: 24),
                         Container(
+                      width: double.infinity,
                       padding: EdgeInsets.all(48),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.4),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
@@ -1974,10 +1962,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
                           Container(
                             padding: EdgeInsets.all(20),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.4),
+                              color: Colors.white,
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Colors.white.withOpacity(0.1),
+                                color: Colors.grey.withOpacity(0.2),
                                 width: 2,
                               ),
                             ),
@@ -1991,7 +1979,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                           Text(
                             'No Reviews Yet',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Color(0xFF1F2937),
                               fontSize: 20,
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w700,
@@ -2002,7 +1990,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                           Text(
                             'Be the first to share your experience',
                             style: TextStyle(
-                              color: Colors.white54,
+                              color: Color(0xFF6B7280),
                               fontSize: 14,
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w500,
@@ -2048,7 +2036,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
@@ -2074,7 +2062,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
-                        color: Colors.white.withOpacity(0.05),
+                        color: Colors.grey.withOpacity(0.2),
                         width: 1,
                       ),
                     ),
@@ -2098,7 +2086,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             fontFamily: "Poppins",
-                            color: Colors.white,
+                            color: Color(0xFF1F2937),
                             letterSpacing: -0.8,
                             height: 1.2,
                           ),
@@ -2113,7 +2101,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                   child: Text(
                     des != null && des.isNotEmpty ? des : "No description available.",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xFF6B7280),
                       fontSize: 15,
                       fontFamily: "Poppins",
                       fontWeight: FontWeight.w400,
@@ -2131,7 +2119,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
             height: MediaQuery.of(context).size.height * 0.18,
                 decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color(0xFFA773F7).withOpacity(0.15),
+              color: Color(0xFFF3E8FF),
               boxShadow: [
                 BoxShadow(
                   color: Color(0xFFA773F7).withOpacity(0.25),
@@ -2158,7 +2146,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
               borderRadius: BorderRadius.circular(18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.4),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: Stack(
@@ -2189,7 +2177,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                     right: 8,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.4),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(14),
                         boxShadow: [
                           BoxShadow(
@@ -2228,7 +2216,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                                 height: 36,
                                 child: Icon(
                                   Icons.add_rounded,
-                                  color: Colors.white,
+                                  color: Color(0xFF6B7280),
                                   size: 18,
                                 ),
                               ),
@@ -2236,7 +2224,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                           ),
                           Container(
                             height: 1,
-                            color: Colors.white.withOpacity(0.1),
+                            color: Colors.grey.withOpacity(0.2),
                             margin: EdgeInsets.symmetric(horizontal: 4),
                           ),
                           // Zoom Out Button
@@ -2254,7 +2242,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                                 height: 36,
                                 child: Icon(
                                   Icons.remove_rounded,
-                                  color: Colors.white,
+                                  color: Color(0xFF6B7280),
                                   size: 18,
                                 ),
                               ),
@@ -2262,7 +2250,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                           ),
                           Container(
                             height: 1,
-                            color: Colors.white.withOpacity(0.1),
+                            color: Colors.grey.withOpacity(0.2),
                             margin: EdgeInsets.symmetric(horizontal: 4),
                           ),
                           // My Location Button
@@ -2316,7 +2304,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.4),
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
@@ -2355,7 +2343,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                                 fontSize: 13,
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                                color: Color(0xFF1F2937),
                                 letterSpacing: -0.2,
                               ),
                             ),
@@ -2372,10 +2360,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
             margin: const EdgeInsets.only(top: 16, bottom: 20),
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.grey.withOpacity(0.2),
                 width: 1,
               ),
               boxShadow: [
@@ -2407,7 +2395,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                     fontSize: 18,
                         fontWeight: FontWeight.w700,
                         fontFamily: "Poppins",
-                        color: Colors.white,
+                        color: Color(0xFF1F2937),
                         letterSpacing: -0.5,
                   ),
                     ),
@@ -2437,13 +2425,13 @@ class _GlowHomePageState extends State<GlowHomePage> {
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           decoration: BoxDecoration(
             color: isToday 
-                ? Color(0xFFA773F7).withOpacity(0.05)
-                : Colors.black.withOpacity(0.4),
+                ? Color(0xFFF3E8FF)
+                : Colors.white,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isToday 
                   ? Color(0xFFA773F7).withOpacity(0.2)
-                  : Colors.white.withOpacity(0.1),
+                  : Colors.grey.withOpacity(0.2),
               width: isToday ? 1.5 : 1,
             ),
           ),
@@ -2481,7 +2469,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                           fontSize: 13,
                           fontWeight: isToday ? FontWeight.w700 : FontWeight.w600,
                           fontFamily: "Poppins",
-                          color: isToday ? Colors.white : Colors.white54,
+                          color: isToday ? Color(0xFFA773F7) : Color(0xFF6B7280),
                           letterSpacing: -0.2,
                         ),
                       ),
@@ -2500,7 +2488,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                             fontSize: 9,
                             fontWeight: FontWeight.w700,
                             fontFamily: "Poppins",
-                    color: Colors.white,
+                    color: Color(0xFFA773F7),
                             letterSpacing: 0.1,
                   ),
                 ),
@@ -2515,7 +2503,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                 size: 14,
                 color: isClosed 
                     ? Color(0xFFEF4444)
-                    : (isToday ? Color(0xFFA773F7) : Colors.white54),
+                    : (isToday ? Color(0xFFA773F7) : Color(0xFF6B7280)),
               ),
               SizedBox(width: 6),
               Flexible(
@@ -2530,7 +2518,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                     fontFamily: "Poppins",
                     color: isClosed 
                         ? Color(0xFFEF4444)
-                        : (isToday ? Colors.white : Colors.white54),
+                        : (isToday ? Color(0xFFA773F7) : Color(0xFF6B7280)),
                     letterSpacing: -0.2,
                   ),
                 ),
@@ -2546,7 +2534,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
     return Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.4),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -2585,7 +2573,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                     fontSize: 22,
                     fontWeight: FontWeight.w800,
                     fontFamily: "Poppins",
-                    color: Colors.white,
+                    color: Color(0xFF1F2937),
                     letterSpacing: -0.8,
                     height: 1.2,
                   ),
@@ -2597,10 +2585,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.grey.withOpacity(0.2),
                 width: 1,
               ),
             ),
@@ -2616,7 +2604,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                   child: Text(
                     'All reviews from verified Trend Today customers',
                     style: TextStyle(
-                      color: Colors.white54,
+                      color: Color(0xFF6B7280),
                       fontSize: 13,
                       fontFamily: "Poppins",
                       fontWeight: FontWeight.w500,
@@ -2743,7 +2731,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
       padding: const EdgeInsets.all(18),
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.4),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -2818,7 +2806,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                               fontFamily: "Poppins",
-                              color: Colors.white,
+                              color: Color(0xFF1F2937),
                               letterSpacing: -0.4,
                             ),
                           ),
@@ -2845,7 +2833,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                             fontSize: 14,
                             fontWeight: FontWeight.w700,
                             fontFamily: "Poppins",
-                            color: Colors.white,
+                            color: Color(0xFF1F2937),
                           ),
                         ),
                       ],
@@ -2865,7 +2853,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                             fontSize: 12,
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.w500,
-                            color: Colors.white54,
+                            color: Color(0xFF6B7280),
                             letterSpacing: -0.2,
                           ),
                         ),
@@ -2880,7 +2868,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
           Container(
             padding: EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
@@ -2889,7 +2877,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                 fontSize: 14,
                 fontFamily: "Poppins",
                 fontWeight: FontWeight.w400,
-                color: Colors.white,
+                color: Color(0xFF1F2937),
                 height: 1.5,
                 letterSpacing: -0.1,
               ),
@@ -2912,8 +2900,8 @@ class _GlowHomePageState extends State<GlowHomePage> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Colors.black,
-            Color(0xFFFFEDD5),
+            Color(0xFFFAFAFA),
+            Color(0xFFF3E8FF),
           ],
         ),
         borderRadius: BorderRadius.circular(14),
@@ -2975,7 +2963,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                         fontFamily: "Poppins",
-                        color: Colors.white,
+                        color: Color(0xFF1F2937),
                         letterSpacing: -0.3,
                       ),
                     ),
@@ -3006,7 +2994,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                     fontSize: 13,
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w400,
-                    color: Colors.white,
+                    color: Color(0xFF6B7280),
                     height: 1.5,
                     letterSpacing: -0.1,
                   ),
@@ -3038,7 +3026,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
             child: Text(
               monthName,
               style: TextStyle(
-              color: Colors.white,
+              color: Color(0xFF1F2937),
               fontSize: 15,
               fontWeight: FontWeight.w700,
                 fontFamily: "Poppins",
@@ -3056,7 +3044,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
             selectionColor: Color(0xFFA773F7),
               selectedTextColor: Colors.white,
               dayTextStyle: TextStyle(
-              color: Colors.white54,
+              color: Color(0xFF6B7280),
               fontSize: 9,
               fontWeight: FontWeight.w500,
               fontFamily: "Poppins",
@@ -3068,7 +3056,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
                 fontWeight: FontWeight.w400,
               ),
               dateTextStyle: TextStyle(
-              color: Colors.white,
+              color: Color(0xFF1F2937),
               fontSize: 16,
               fontWeight: FontWeight.w600,
               fontFamily: "Poppins",
@@ -3146,24 +3134,13 @@ class TimeSlotItem extends StatelessWidget {
       curve: Curves.easeInOut,
       height: 36,
       decoration: BoxDecoration(
-        gradient: isSelected
-            ? LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        )
-            : null,
-        color: isSelected ? null : Colors.white.withOpacity(0.05),
+        color: isSelected ? Colors.black : Colors.white,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: isSelected
-              ? Color(0xFFA773F7).withOpacity(0.3)
-              : Colors.white.withOpacity(0.1),
-          width: isSelected ? 1.5 : 1,
+              ? Colors.black
+              : Colors.grey.withOpacity(0.2),
+          width: 1,
         ),
         
       ),
@@ -3171,7 +3148,7 @@ class TimeSlotItem extends StatelessWidget {
         child: Text(
           time,
           style: TextStyle(
-            color: isSelected ? Colors.white : Colors.white54,
+            color: isSelected ? Colors.white : Color(0xFF6B7280),
             fontSize: 11,
             fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
             fontFamily: "Poppins",

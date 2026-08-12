@@ -644,12 +644,8 @@ class _CartServicesPageState extends State<CartServices> {
                   Container(
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: Color(0xFFF3E8FF),
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Color(0xFFA773F7).withOpacity(0.2),
-                        width: 1,
-                      ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.06),
@@ -661,7 +657,7 @@ class _CartServicesPageState extends State<CartServices> {
                     ),
                     child: Icon(
                       Icons.receipt_long_rounded,
-                      color: Color(0xFFA773F7),
+                      color: Colors.white,
                       size: 20,
                     ),
                   ),
