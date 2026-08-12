@@ -61,12 +61,13 @@ class _TrendTodayLoginState extends State<TrendTodayLogin> {
           _isLoading = false;
         });
 
-        if (copyfrom != "main") {
-          Navigator.pop(context, "result");
-        } else {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => (BottomTabBar())));
-        }
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BottomTabBar(key: BottomTabBar.globalKey),
+          ),
+          (route) => false,
+        );
       } else {
         setState(() {
           _isLoading = false;

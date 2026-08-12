@@ -602,7 +602,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                                           child: _buildActionButton(
                                             'Logout',
                                             Icons.logout_rounded,
-                                            Colors.black.withOpacity(0.3),
+                                            Color(0xFFA773F7), // Purple
                                             Colors.white,
                                             () async {
                                           SharedPreferences prefs =
@@ -628,8 +628,8 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                                           child: _buildActionButton(
                                             'Delete Account',
                                             Icons.delete_outline_rounded,
-                                            Colors.black.withOpacity(0.3),
-                                            Color(0xFFEF4444),
+                                            Colors.black, // Black
+                                            Colors.white,
                                             () {
                                           showAlertDialog3();
                                         },
