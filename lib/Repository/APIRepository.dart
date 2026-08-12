@@ -230,11 +230,5 @@ class APIRepository {
     return response;
   }
 
-  Future<bool> updatePaymentIntent(
-      String? appointment_id, String? payment_intent_id) async {
-    final response = await _helper.updatePaymentIntent(
-        "stripe/update-intent", appointment_id!, payment_intent_id!);
-    print('response !!!@@@@' + '$response');
-    return response;
-  }
+
 }

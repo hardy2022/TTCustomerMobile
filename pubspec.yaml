@@ -40,7 +40,6 @@ dependencies:
   flutter:
     sdk: flutter
   form_field_validator: ^1.0.1
-  flutter_stripe: ^12.1.1      # ✅ downgrade for Kotlin 1.9.x compatibility
   dio: ^5.2.0
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.10+1

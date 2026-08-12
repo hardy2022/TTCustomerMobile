@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 import 'package:dio/dio.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import '../login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +41,6 @@ class _CartServicesPageState extends State<CartServices> {
   bool _isVisible = false;
   bool _hasServiceError = false;
   double totalAmount = 0.0;
-  var paymentIntent;
   late SharedPreferences prefs;
 
   @override
@@ -59,32 +57,6 @@ class _CartServicesPageState extends State<CartServices> {
     prefs = await SharedPreferences.getInstance();
   }
 
-
-  createPaymentIntent(String amount, String currency) async {
-    Dio dio = Dio();
-    Response response = await dio.post(
-      'https://api.stripe.com/v1/payment_intents',
-      options: Options(
-        headers: {
-          'Authorization':
-              'Bearer ...',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-      ),
-      data: {
-        'amount': amount,
-        'currency': currency,
-      },
-    );
-    if (response.statusCode == 200) {
-      Map<String, dynamic> output = {
-        'client_secret': response.data['client_secret'],
-      };
-      return output;
-    } else {
-      print('Error charging user: ${response.data.toString()}');
-    }
-  }
 
   Future<void> getOrder(BuildContext context) async {
     // Initialize the bloc

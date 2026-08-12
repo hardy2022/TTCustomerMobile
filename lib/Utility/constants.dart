@@ -88,3 +88,34 @@ final kHeadingTextStyle = TextStyle(
 
 
 
+enum Environment { live, staging, dev, ngrok }
+
+class EnvironmentConfig {
+  static const Environment current = Environment.live;
+
+  static String get baseUrl {
+    switch (current) {
+      case Environment.live:
+        return 'https://www.trendtoday.ca/';
+      case Environment.staging:
+        return 'https://staging.trendtoday.ca/';
+      case Environment.dev:
+        return 'http://dev.trendtoday.ca:5000/';
+      case Environment.ngrok:
+        return 'https://06350117cdcd.ngrok-free.app/';
+    }
+  }
+
+  static String get socketUrl {
+    switch (current) {
+      case Environment.live:
+        return 'wss://www.trendtoday.ca';
+      case Environment.staging:
+        return 'https://staging.trendtoday.ca/';
+      case Environment.dev:
+        return 'http://trendtoday-env.eba-msabh2zc.us-east-2.elasticbeanstalk.com/';
+      case Environment.ngrok:
+        return 'https://06350117cdcd.ngrok-free.app/';
+    }
+  }
+}

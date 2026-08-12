@@ -1,4 +1,5 @@
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'Utility/constants.dart';
 
 class ChatService {
   late IO.Socket socket;
@@ -13,7 +14,7 @@ class ChatService {
     });*/
 
 
-    socket = IO.io('https://www.trendtoday.ca/',
+    socket = IO.io(EnvironmentConfig.socketUrl,
         <String, dynamic>{
           'transports': ['websocket'],
           //'autoConnect': true,

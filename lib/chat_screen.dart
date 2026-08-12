@@ -110,7 +110,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver{
 
         });*/
 
-    socket = IO.io('wss://www.trendtoday.ca', <String, dynamic>{
+    socket = IO.io(EnvironmentConfig.socketUrl, <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
       'forceNew': true,

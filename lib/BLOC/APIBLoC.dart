@@ -505,33 +505,6 @@ class APIBloC {
 
 
 
-  Future<bool> updatePaymentIntent(String appointment_id, String payment_intent_id) async {
-    print('here####');
-    validateChannelSink.add(ApiResponse.loading('Loading...'));
-
-    try {
-      bool userdata1 = await _aPIRepository.updatePaymentIntent(
-          appointment_id, payment_intent_id);
-      print("userdata1 " + userdata1.toString());
-      validateChannelSink.add(ApiResponse.completed("true"));
-
-      if (userdata1) {
-        return true;
-      } else {
-        return false;
-      }
-    } catch (e) {
-      validateChannelSink.add(ApiResponse.error(e.toString()));
-      print(e);
-      return false; // Return false in case of an error
-    }
-  }
-
-
-
-
-
-
   dispose() {
     _validateChannelController.close();
   }

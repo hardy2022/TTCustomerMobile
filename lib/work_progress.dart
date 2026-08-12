@@ -39,7 +39,7 @@ class WorkerProfilePage extends StatefulWidget {
 
 class _WorkerProfilePageState extends State<WorkerProfilePage> {
   // ===== Backend + deep-link config =====
-  static const String _backendBaseUrl = 'https://www.trendtoday.ca/';
+  static final String _backendBaseUrl = EnvironmentConfig.baseUrl;
   static const String _deeplinkScheme = 'trendtoday';
   static const String _deeplinkHost = 'checkout';
 

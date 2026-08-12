@@ -26,18 +26,7 @@ import 'api_exception.dart';
 
 class ApiBaseHelper {
 
-  //dev server
-  //final String _baseUrl = "http://dev.trendtoday.ca:5000/";
-
-
-  //staging server
-  //final String _baseUrl = "https://staging.trendtoday.ca/";
-
-  //for testing push notifications
-  //final String _baseUrl = " https://06350117cdcd.ngrok-free.app/";
-
-  //Live server
-  final String _baseUrl = "https://www.trendtoday.ca/";
+  final String _baseUrl = EnvironmentConfig.baseUrl;
 
 
 
@@ -974,8 +963,8 @@ class ApiBaseHelper {
       };
       //final body = jsonEncode(appointmentInputData.toJson());
 
-    final body = jsonEncode(<String, String>{
-        'appointment_id': appointment_id,
+    final body = jsonEncode(<String, dynamic>{
+        'appointment_id': int.tryParse(appointment_id) ?? appointment_id,
       });
 
 
@@ -1212,49 +1201,6 @@ class ApiBaseHelper {
       print('here');
 
     }catch (e) {
-      print('Error: $e');
-      throw Exception('Failed to fetch data');
-    }
-  }
-
-
-  Future<bool> updatePaymentIntent(String url, String appointment_id, String payment_intent_id) async {
-    print('Api Get, url $url');
-    http.Response responseJson;
-    String isValid = 'true';
-
-    try {
-      final Uri uri = Uri.parse(_baseUrl + url); // parse string
-
-      final response = await http.put(
-        uri,
-        headers: {
-          "Content-Type": "application/json",
-          'Authorization': "Bearer "+ConstantVariable.authToken!,
-
-        },
-        body: jsonEncode(<String, String>{
-          'appointment_id': appointment_id,
-          'payment_intent_id': payment_intent_id,
-        }),
-      );
-
-      print("Response code: ${response.statusCode}");
-      print("Response body: ${response.body}");
-
-      // Check if the status code is 202 ACCEPTED
-      if (response.statusCode == 202) {
-        return true;
-      } else {
-        return false;
-      }
-    } on SocketException {
-      print('No net');
-      throw FetchDataException('No Internet connection');
-    } on http.ClientException {
-      print('ClientException occurred');
-      return false; // Return false if client error occurs
-    } catch (e) {
       print('Error: $e');
       throw Exception('Failed to fetch data');
     }
