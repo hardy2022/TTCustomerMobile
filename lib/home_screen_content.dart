@@ -845,13 +845,23 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
         _markers.clear();
 
         for (var item in _allFilteredProfessionals!) {
-          _updateMapLocation(
-              double.parse(item.service_latitude!),
-              double.parse(item.service_longitude!),
-              item.location ?? " ",
-              item.cost ?? " ",
-              item.profile_image ?? " ",
-              item.vendor_id!);
+          if (item.service_latitude != null &&
+              item.service_latitude!.isNotEmpty &&
+              item.service_longitude != null &&
+              item.service_longitude!.isNotEmpty &&
+              item.vendor_id != null) {
+            try {
+              _updateMapLocation(
+                  double.parse(item.service_latitude!),
+                  double.parse(item.service_longitude!),
+                  item.location ?? " ",
+                  item.cost ?? " ",
+                  item.profile_image ?? " ",
+                  item.vendor_id!);
+            } catch (e) {
+              print('Error parsing location for marker: $e');
+            }
+          }
         }
       });
 
@@ -3028,7 +3038,7 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => GlowHomePage(
-                                _allProfessionals![index].vendor_id!,
+                                _allProfessionals![index].vendor_id ?? 0,
                               ),
                             ),
                           );
@@ -3036,11 +3046,11 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                       },
                           borderRadius: BorderRadius.circular(18),
                         child: LocationBasedItem(
-                          image: _allProfessionals![index].profile_image!,
-                          name: _allProfessionals![index].professional_name!,
+                          image: _allProfessionals![index].profile_image ?? _allProfessionals![index].logo ?? "",
+                          name: _allProfessionals![index].professional_name ?? _allProfessionals![index].business_name ?? "",
                           amount: _allProfessionals![index].cost ?? "CAD 0",
                           duration:
-                              _allProfessionals![index].professional_name!,
+                              _allProfessionals![index].professional_name ?? _allProfessionals![index].business_name ?? "",
                           ),
                         ),
                       ),
