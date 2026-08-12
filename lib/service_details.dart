@@ -264,7 +264,13 @@ class _GlowHomePageState extends State<GlowHomePage> {
               : (value.professional_name?.trim().isNotEmpty == true)
                   ? value.professional_name!.trim()
                   : '';
-          professionalAddress = value.location ?? '';
+          professionalAddress = (value.location?.isNotEmpty == true)
+              ? value.location!
+              : (value.service_location?.address1?.isNotEmpty == true)
+                  ? value.service_location!.address1!
+                  : (value.service_location?.address2?.isNotEmpty == true)
+                      ? value.service_location!.address2!
+                      : '';
           profileImage = value.user?.profile_image ?? '';
           rentalLocationList = value?.rental_address ?? [];
           hasAddresses =
