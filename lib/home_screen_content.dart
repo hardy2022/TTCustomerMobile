@@ -2440,10 +2440,12 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.2),
                     ),
-                    child: professional.profile_image != null &&
-                            professional.profile_image!.isNotEmpty
+                    child: (professional.profile_image != null && professional.profile_image!.isNotEmpty) ||
+                           (professional.logo != null && professional.logo!.isNotEmpty)
                         ? CachedNetworkImage(
-                            imageUrl: professional.profile_image!,
+                            imageUrl: (professional.profile_image != null && professional.profile_image!.isNotEmpty)
+                                ? professional.profile_image!
+                                : professional.logo!,
                             width: double.infinity,
                             height: double.infinity,
                             fit: BoxFit.cover,
