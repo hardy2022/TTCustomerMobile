@@ -33,7 +33,7 @@ class CartServicesItem extends StatelessWidget {
     return Container(
       width: devwidth,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.3),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -63,15 +63,7 @@ class CartServicesItem extends StatelessWidget {
                 width: 64,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                  color: Color(0xFFA773F7),
                   boxShadow: [
                     BoxShadow(
                       color: Color(0xFFF97316).withOpacity(0.3),
@@ -141,7 +133,7 @@ class CartServicesItem extends StatelessWidget {
                     (name != null && name!.trim().isNotEmpty) ? name!.trim() : 'Vendor',
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
-                    color: Colors.white,
+                    color: Color(0xFF1F2937),
                     fontSize: 15,
                     fontFamily: 'Poppins',
                     letterSpacing: -0.4,
@@ -160,13 +152,13 @@ class CartServicesItem extends StatelessWidget {
                     return Container(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
+                        color: Color(0xFFF3E8FF),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
                         service,
                         style: TextStyle(
-                          color: Colors.white70,
+                          color: Color(0xFFA773F7),
                           fontSize: 10,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
@@ -182,7 +174,7 @@ class CartServicesItem extends StatelessWidget {
                     child: Text(
                       '+${services!.length - 2} more',
                       style: TextStyle(
-                        color: Colors.white54,
+                        color: Color(0xFF6B7280),
                         fontSize: 10,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
@@ -194,15 +186,7 @@ class CartServicesItem extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                    color: Color(0xFFA773F7),
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
@@ -235,7 +219,7 @@ class CartServicesItem extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Color(0xFFFAFAFA),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -244,14 +228,14 @@ class CartServicesItem extends StatelessWidget {
                     Icon(
                       Icons.access_time_rounded,
                       size: 12,
-                      color: Colors.white70,
+                      color: Color(0xFF6B7280),
                     ),
                     SizedBox(width: 4),
                     Text(
                       DateConverter.convertTimeFormat(time!),
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
+                        color: Color(0xFF1F2937),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
                         letterSpacing: -0.1,
@@ -264,7 +248,7 @@ class CartServicesItem extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Color(0xFFFAFAFA),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -273,14 +257,14 @@ class CartServicesItem extends StatelessWidget {
                     Icon(
                       Icons.calendar_today_rounded,
                       size: 12,
-                      color: Colors.white70,
+                      color: Color(0xFF6B7280),
                     ),
                     SizedBox(width: 4),
                     Text(
                       DateConverter.convertDateFormat1(date!)!,
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
+                        color: Color(0xFF1F2937),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
                         letterSpacing: -0.1,

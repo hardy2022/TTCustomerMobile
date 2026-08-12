@@ -268,23 +268,14 @@ class _CartServicesPageState extends State<CartServices> {
         statusBarBrightness: Brightness.light,
       ),
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFFFAFAFA),
         // Make sure the background color contrasts with the status bar icons
         body: _isLoading
             ? Stack(
                 children: [
-                  // Orange gradient background with pattern
                   Container(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                      color: Color(0xFFFAFAFA),
                     ),
                     child: CustomPaint(
                       size: Size.infinite,
@@ -377,15 +368,7 @@ class _CartServicesPageState extends State<CartServices> {
                 child: (ConstantVariable.authToken!.length > 0)
                     ? Container(
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                          color: Color(0xFFFAFAFA),
                         ),
                         child: Stack(
                           children: [
@@ -445,22 +428,14 @@ class _CartServicesPageState extends State<CartServices> {
                       )
                     : Container(
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              Color(0xFFA773F7),
-                              Colors.black,
-                              Colors.black,
-                            ],
-                          ),
+                          color: Color(0xFFFAFAFA),
                         ),
                         child: Center(
                         child: Container(
   margin: EdgeInsets.symmetric(horizontal: 24),
   padding: EdgeInsets.all(24),
   decoration: BoxDecoration(
-    color: Color(0xFF1E1E1E),
+    color: Colors.white,
     borderRadius: BorderRadius.circular(20),
     boxShadow: [
       BoxShadow(
@@ -478,7 +453,7 @@ class _CartServicesPageState extends State<CartServices> {
       Text(
         'Please Login',
         style: TextStyle(
-          color: Colors.white,
+          color: Color(0xFF1F2937),
           fontSize: 22,
           fontWeight: FontWeight.w700,
           fontFamily: "Poppins",
@@ -489,7 +464,7 @@ class _CartServicesPageState extends State<CartServices> {
         'To view the details please login into your account.',
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: Colors.white70,
+          color: Color(0xFF6B7280),
           fontSize: 14,
           fontFamily: "Poppins",
         ),
@@ -578,14 +553,7 @@ class _CartServicesPageState extends State<CartServices> {
                 width: 4,
                 height: 20,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.white,
-                      Colors.white.withOpacity(0.8),
-                    ],
-                  ),
+                  color: Color(0xFFA773F7),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -593,7 +561,7 @@ class _CartServicesPageState extends State<CartServices> {
               Text(
                 'My Bookings',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Color(0xFF1F2937),
                   fontSize: 20,
                   fontWeight: FontWeight.w800,
                   fontFamily: "Poppins",
@@ -608,7 +576,7 @@ class _CartServicesPageState extends State<CartServices> {
             child: Text(
               'Manage and track your service requests',
               style: TextStyle(
-                color: Colors.white.withOpacity(0.9),
+                color: Color(0xFF6B7280),
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
                 fontFamily: "Poppins",
@@ -623,16 +591,7 @@ class _CartServicesPageState extends State<CartServices> {
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               margin: EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.08),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.white.withOpacity(0.1)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -643,7 +602,7 @@ class _CartServicesPageState extends State<CartServices> {
                       Text(
                         'Total Amount',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.85),
+                          color: Color(0xFF6B7280),
                           fontSize: 12,
                           fontFamily: "Poppins",
                           fontWeight: FontWeight.w600,
@@ -658,7 +617,7 @@ class _CartServicesPageState extends State<CartServices> {
                           Text(
                             'CAD',
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.9),
+                              color: Color(0xFF1F2937),
                               fontSize: 14,
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w600,
@@ -669,7 +628,7 @@ class _CartServicesPageState extends State<CartServices> {
                           Text(
                             totalAmount.toStringAsFixed(2),
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Color(0xFF1F2937),
                               fontSize: 28,
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.w900,
@@ -685,22 +644,15 @@ class _CartServicesPageState extends State<CartServices> {
                   Container(
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Colors.white.withOpacity(0.2),
-                          Colors.white.withOpacity(0.15),
-                        ],
-                      ),
+                      color: Color(0xFFF3E8FF),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.3),
+                        color: Color(0xFFA773F7).withOpacity(0.2),
                         width: 1,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
+                          color: Colors.black.withOpacity(0.06),
                           blurRadius: 12,
                           offset: Offset(0, 4),
                           spreadRadius: 0,
@@ -709,7 +661,7 @@ class _CartServicesPageState extends State<CartServices> {
                     ),
                     child: Icon(
                       Icons.receipt_long_rounded,
-                      color: Colors.white,
+                      color: Color(0xFFA773F7),
                       size: 20,
                     ),
                   ),
@@ -799,17 +751,17 @@ class _CartServicesPageState extends State<CartServices> {
                 Container(
                   padding: EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
+                    color: Color(0xFFF3E8FF),
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.2),
+                      color: Color(0xFFA773F7).withOpacity(0.2),
                       width: 2,
                     ),
                   ),
                   child: Icon(
                     Icons.calendar_today_rounded,
                   size: 64,
-                    color: Colors.white.withOpacity(0.9),
+                    color: Color(0xFFA773F7),
                   ),
                 ),
                 SizedBox(height: 24),
@@ -819,7 +771,7 @@ class _CartServicesPageState extends State<CartServices> {
                     fontSize: 24,
                     fontWeight: FontWeight.w800,
                     fontFamily: "Poppins",
-                    color: Colors.white,
+                    color: Color(0xFF1F2937),
                     letterSpacing: -0.8,
                     ),
                   textAlign: TextAlign.center,
@@ -829,7 +781,7 @@ class _CartServicesPageState extends State<CartServices> {
                   'Once you book a service, it will appear here for easy tracking and management.',
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.white.withOpacity(0.9),
+                    color: Color(0xFF6B7280),
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w500,
                     height: 1.5,

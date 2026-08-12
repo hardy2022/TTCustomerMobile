@@ -405,30 +405,13 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
         ),
         child: Scaffold(
+          backgroundColor: Color(0xFFFAFAFA),
           body: Stack(
             children: [
-              // Orange gradient background with pattern
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
-                ),
-                child: CustomPaint(
-                  size: Size.infinite,
-                  // painter: _HomePatternPainter(),
-                ),
-              ),
               // Main content
               _isLoading
               ? _buildSkeletonLoader()
@@ -455,14 +438,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                                               width: 4,
                                               height: 20,
                                               decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Colors.white,
-                                                    Colors.white.withOpacity(0.8),
-                                                  ],
-                                                ),
+                                                color: Color(0xFFA773F7),
                                                 borderRadius: BorderRadius.circular(2),
                                               ),
                                             ),
@@ -470,7 +446,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                                             Text(
                                               'My Profile',
                                               style: TextStyle(
-                                                color: Colors.white,
+                                                color: Color(0xFF1F2937),
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w800,
                                                 fontFamily: "Poppins",
@@ -485,7 +461,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                                           child: Text(
                                             'Manage your account and preferences',
                                             style: TextStyle(
-                                              color: Colors.white.withOpacity(0.9),
+                                              color: Color(0xFF6B7280),
                                               fontSize: 13,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: "Poppins",
@@ -537,14 +513,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                                               width: 4,
                                               height: 20,
                                               decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Colors.white,
-                                                    Colors.white.withOpacity(0.8),
-                                                  ],
-                                                ),
+                                                color: Color(0xFFA773F7),
                                                 borderRadius: BorderRadius.circular(2),
                                               ),
                                             ),
@@ -552,7 +521,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                                             Text(
                                               'My Profile',
                                               style: TextStyle(
-                                                color: Colors.white,
+                                                color: Color(0xFF1F2937),
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w800,
                                                 fontFamily: "Poppins",
@@ -567,7 +536,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                                           child: Text(
                                             'Manage your account and preferences',
                                             style: TextStyle(
-                                              color: Colors.white.withOpacity(0.9),
+                                              color: Color(0xFF6B7280),
                                               fontSize: 13,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: "Poppins",
@@ -648,11 +617,11 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
   margin: EdgeInsets.symmetric(horizontal: 24),
   padding: EdgeInsets.all(24),
   decoration: BoxDecoration(
-    color: Color(0xFF1E1E1E),
+    color: Colors.white,
     borderRadius: BorderRadius.circular(20),
     boxShadow: [
       BoxShadow(
-        color: Colors.black.withOpacity(0.5),
+        color: Colors.black.withOpacity(0.08),
         blurRadius: 20,
         offset: Offset(0, 10),
       ),
@@ -666,7 +635,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
       Text(
         'Please Login',
         style: TextStyle(
-          color: Colors.white,
+          color: Color(0xFF1F2937),
           fontSize: 22,
           fontWeight: FontWeight.w700,
           fontFamily: "Poppins",
@@ -677,7 +646,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
         'To view the details please login into your account.',
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: Colors.white70,
+          color: Color(0xFF6B7280),
           fontSize: 14,
           fontFamily: "Poppins",
         ),
@@ -736,7 +705,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
       margin: EdgeInsets.symmetric(horizontal: 20),
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.3),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -765,15 +734,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                 height: 72,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                  color: Color(0xFFA773F7),
                   boxShadow: [
                     BoxShadow(
                       color: Color(0xFFF97316).withOpacity(0.3),
@@ -828,7 +789,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
                     fontFamily: "Poppins",
-                    color: Colors.white,
+                    color: Color(0xFF1F2937),
                     letterSpacing: -0.8,
                     height: 1.2,
                   ),
@@ -840,15 +801,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                    color: Color(0xFFA773F7),
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
@@ -901,10 +854,10 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: Color(0xFFF3E8FF),
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white.withOpacity(0.2),
+                color: Color(0xFFA773F7).withOpacity(0.2),
                 width: 1.5,
               ),
               boxShadow: [
@@ -934,7 +887,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                 borderRadius: BorderRadius.circular(18),
                 child: Icon(
                   Icons.edit_rounded,
-                  color: Colors.white,
+                  color: Color(0xFFA773F7),
                   size: 16,
                 ),
               ),
@@ -949,7 +902,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.3),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -984,15 +937,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                   width: 4,
                   height: 20,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                    color: Color(0xFFA773F7),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -1003,19 +948,19 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     fontFamily: "Poppins",
-                    color: Colors.white,
+                    color: Color(0xFF1F2937),
                     letterSpacing: -0.4,
             ),
           ),
               ],
             ),
           ),
-          Divider(height: 1, thickness: 1, color: Colors.white.withOpacity(0.1)),
+          Divider(height: 1, thickness: 1, color: Colors.grey[200]),
           ...children.map((child) => Column(
                 children: [
                   child,
                   if (children.indexOf(child) < children.length - 1)
-                    Divider(height: 1, thickness: 1, color: Colors.white.withOpacity(0.1), indent: 74),
+                    Divider(height: 1, thickness: 1, color: Colors.grey[200], indent: 74),
                 ],
               )),
         ],
@@ -1032,15 +977,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+              color: Color(0xFFA773F7),
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
@@ -1064,7 +1001,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
                 fontFamily: "Poppins",
-                color: Colors.white70,
+                color: Color(0xFF4B5563),
                 letterSpacing: -0.2,
                 height: 1.4,
               ),
@@ -1175,15 +1112,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
         // Orange gradient background with pattern
         Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+            color: Color(0xFFFAFAFA),
           ),
           child: CustomPaint(
             size: Size.infinite,
