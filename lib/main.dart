@@ -22,7 +22,7 @@ void main() async {
   //await Firebase.initializeApp();
 
   await Firebase.initializeApp();
-  await FCMService.initializeFCM();
+  FCMService.initializeFCM(); // Don't await this so it doesn't block runApp
 
   // Cold-start handling
   FirebaseMessaging.instance.getInitialMessage().then((message) {
@@ -108,7 +108,7 @@ class _TrendyServicesOnboardingState extends State<TrendyServicesOnboarding> wit
     _controller.forward();
 
     sharedPreferenceData().whenComplete(() async {
-      Timer(Duration(seconds: 4), () {
+      Timer(Duration(seconds: 2), () {
         if (launchedFromNotification) return;
 
         if (ConstantVariable.authToken != null) {
@@ -219,35 +219,10 @@ class _TrendyServicesOnboardingState extends State<TrendyServicesOnboarding> wit
                     opacity: _fadeAnimation,
                     child: ScaleTransition(
                       scale: _scaleAnimation,
-                      child: Container(
-                        padding: EdgeInsets.all(24),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.12),
-                          borderRadius: BorderRadius.circular(28),
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.2),
-                            width: 1.5,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.15),
-                              blurRadius: 30,
-                              offset: Offset(0, 10),
-                              spreadRadius: 0,
-                            ),
-                            BoxShadow(
-                              color: Colors.white.withOpacity(0.1),
-                              blurRadius: 20,
-                              offset: Offset(0, -5),
-                              spreadRadius: 0,
-                            ),
-                          ],
-                        ),
-                        child: Image.asset(
-                          'assets/images/nl_white.png',
-                          height: 72,
-                          fit: BoxFit.contain,
-                        ),
+                      child: Image.asset(
+                        'assets/images/nl_white.png',
+                        height: 56, // Made smaller and removed the box
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),

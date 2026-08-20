@@ -1568,13 +1568,14 @@ class _GlowHomePageState extends State<GlowHomePage> {
                       0,
                     ),
                   ),
-                  Expanded(
-                    child: _buildLocationToggleItem(
-                      'Vendor Outlet',
-                      Icons.store_outlined,
-                      1,
+                  if (hasAddresses)
+                    Expanded(
+                      child: _buildLocationToggleItem(
+                        'Vendor Outlet',
+                        Icons.store_outlined,
+                        1,
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),

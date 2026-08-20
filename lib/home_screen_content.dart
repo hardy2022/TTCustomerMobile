@@ -91,9 +91,9 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
   bool isLoading = false;
   String selectedLocation = "";
 
-  bool _isLoadingTab1 = false;
-  bool _isLoadingTab2 = false;
-  bool _isLoadingTab3 = false;
+  bool _isLoadingTab1 = true;
+  bool _isLoadingTab2 = true;
+  bool _isLoadingTab3 = true;
   bool _hasServiceError = false;
   bool _hasLocationError = false;
   bool _hasProfessionalError = false;
@@ -460,7 +460,12 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
 
           if (value.message == "Unauthorized") {
             print("Unauthorized1111111 ");
-            showAlertDialog();
+            ConstantVariable.authToken = "";
+            ConstantVariable.refreshToken = "";
+            prefs.remove("auth_token");
+            prefs.remove("refresh_token");
+            ConstantVariable.userName = "Guest";
+            ConstantVariable.userProfileImage = "";
             //getToken(context);
           } else {}
         });

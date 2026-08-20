@@ -49,7 +49,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
   String? phone;
   String? startDate = "2024-04-08 06:43:34.236204";
   String? loyalityPoints;
-  bool _isLoading = false;
+  bool _isLoading = true;
   bool _hasServiceError = false;
   late CustomerProfileResponse customerProfileResponse;
   late SharedPreferences prefs;
@@ -80,6 +80,8 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
         ConstantVariable.authToken!.isNotEmpty) {
       _isLoading = true;
       getUserProfile(context);
+    } else {
+      _isLoading = false;
     }
   }
 
