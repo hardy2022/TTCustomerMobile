@@ -23,6 +23,7 @@ import 'Utility/service_error_widget.dart';
 import 'appointment_List_view_item.dart';
 import 'location_based_item.dart';
 import 'login.dart';
+import 'Utility/login_prompt.dart';
 import 'package:flutter/cupertino.dart';
 import 'services/location_service.dart';
 import 'home_screen.dart';
@@ -122,7 +123,6 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
   void initState() {
     super.initState();
 
-    PermissionHelper.requestAllPermissions(context);
 
     _initializePreferences(); // Call async initializer
 
@@ -358,6 +358,7 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
   }
 
   Future<void> getUserProfile(BuildContext context) async {
+    if (ConstantVariable.authToken == null || ConstantVariable.authToken!.isEmpty) return;
     // Initialize the bloc
     _bloc = APIBloC();
 
@@ -418,6 +419,7 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
   }
 
   Future<void> getToken(BuildContext context) async {
+    if (ConstantVariable.authToken == null || ConstantVariable.authToken!.isEmpty) return;
     // Initialize the bloc
     try {
       // Perform the async registration work
@@ -3034,14 +3036,7 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                       onTap: () {
                         print('Item tapped: $index');
                         setState(() {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GlowHomePage(
-                                _allProfessionals![index].vendor_id ?? 0,
-                              ),
-                            ),
-                          );
+                          navigateToGlowHomePage(context, _allProfessionals![index].vendor_id ?? 0);
                         });
                       },
                           borderRadius: BorderRadius.circular(18),
@@ -3220,13 +3215,7 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GlowHomePage(
-                                  _allFilteredProfessionals![index].vendor_id!),
-                            ),
-                          );
+                          navigateToGlowHomePage(context, _allFilteredProfessionals![index].vendor_id!);
                         },
                         child: Container(
                           child: AppointmentGridView(

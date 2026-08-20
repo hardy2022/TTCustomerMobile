@@ -8,6 +8,7 @@ import 'Utility/constants.dart';
 import 'custome.dart';
 import 'customer_profile_screen.dart';
 import 'home_screen_content.dart';
+import 'Utility/login_prompt.dart';
 
 
 class BottomTabBar extends StatefulWidget {
@@ -78,6 +79,10 @@ class _BottomTabBarState extends State<BottomTabBar> {
 
   // Handle navigation on tapping different BottomNavigationBar items
   void _onItemTapped(int index) {
+    if ((index == 1 || index == 2) && (ConstantVariable.authToken == null || ConstantVariable.authToken!.isEmpty)) {
+      LoginPrompt.show(context);
+      return;
+    }
     setState(() {
       _selectedIndex = index;
     });

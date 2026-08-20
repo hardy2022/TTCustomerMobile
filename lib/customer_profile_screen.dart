@@ -76,8 +76,6 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
 
     _initialize(); // Call async logic separately
 
-    PermissionHelper.requestGalleryPermission(context);
-
     if (ConstantVariable.authToken != null &&
         ConstantVariable.authToken!.isNotEmpty) {
       _isLoading = true;

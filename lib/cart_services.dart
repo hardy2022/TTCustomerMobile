@@ -92,10 +92,9 @@ class _CartServicesPageState extends State<CartServices> {
           print("_ordersList: " + jsonEncode(_ordersList));
         });
       } else if (value == null || value.isEmpty) {
-        // Service/Network error - show error widget
         setState(() {
           _isLoading = false;
-          _hasServiceError = true;
+          _hasServiceError = false;
           _ordersList = [];
           _isVisible = false;
           totalAmount = 0.0;

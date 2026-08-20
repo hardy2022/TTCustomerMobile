@@ -24,6 +24,7 @@ import 'cart_services.dart';
 import 'home_screen.dart';
 import 'home_screen_content.dart';
 import 'login.dart';
+import 'Utility/login_prompt.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:geolocator/geolocator.dart';
 import 'services/location_service.dart';
@@ -1031,105 +1032,81 @@ class _GlowHomePageState extends State<GlowHomePage> {
 
   Widget _buildHeader() {
     return Container(
-      margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 8, bottom: 16),
-      padding: const EdgeInsets.all(16.0),
+      margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 12, bottom: 20),
+      padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.4),
-        borderRadius: BorderRadius.circular(20),
+        color: Color(0xFF1E1E1E), // Premium dark grey
+        borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
-            blurRadius: 20,
-            offset: Offset(0, 4),
-            spreadRadius: 0,
-          ),
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 8,
-            offset: Offset(0, 2),
-            spreadRadius: 0,
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 24,
+            offset: Offset(0, 8),
           ),
         ],
+        border: Border.all(
+          color: Colors.white.withOpacity(0.05),
+          width: 1,
+        ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Profile image with gradient border
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              // Outer gradient ring
-              Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xFFA773F7).withOpacity(0.15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFA773F7).withOpacity(0.3),
-                      blurRadius: 16,
-                      offset: Offset(0, 4),
-                      spreadRadius: 0,
-                    ),
-                  ],
+          // Profile image with a premium look
+          Container(
+            width: 76,
+            height: 76,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xFFA773F7).withOpacity(0.3),
+                  blurRadius: 16,
+                  offset: Offset(0, 4),
+                  spreadRadius: 2,
                 ),
+              ],
+              border: Border.all(
+                color: Color(0xFFA773F7),
+                width: 2.5,
               ),
-              // White ring
-              Container(
-                width: 74,
-                height: 74,
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.4),
-                  shape: BoxShape.circle,
-                ),
-              ),
-              // Profile image
-              Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 2,
-                  ),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(35),
-                  child: vendorImage.isNotEmpty
-                      ? CachedNetworkImage(
-                          imageUrl: vendorImage,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Container(
-                            color: Colors.white.withOpacity(0.05),
-                            child: Center(
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFA773F7)),
-                              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(35),
+                child: vendorImage.isNotEmpty
+                    ? CachedNetworkImage(
+                        imageUrl: vendorImage,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Container(
+                          color: Colors.white.withOpacity(0.05),
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFA773F7)),
                             ),
                           ),
-                          errorWidget: (context, url, error) => Container(
-                            color: Colors.white.withOpacity(0.05),
-                            child: Image.asset(
-                              'assets/images/nl.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        )
-                      : Container(
+                        ),
+                        errorWidget: (context, url, error) => Container(
                           color: Colors.white.withOpacity(0.05),
                           child: Image.asset(
                             'assets/images/nl.png',
                             fit: BoxFit.cover,
                           ),
                         ),
-                ),
+                      )
+                    : Container(
+                        color: Colors.white.withOpacity(0.05),
+                        child: Image.asset(
+                          'assets/images/nl.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
               ),
-            ],
+            ),
           ),
-          SizedBox(width: 14),
+          SizedBox(width: 18),
           // Name and location
           Expanded(
             child: Column(
@@ -1139,55 +1116,44 @@ class _GlowHomePageState extends State<GlowHomePage> {
                 Text(
                   professionalName,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 22,
                     fontFamily: "Poppins",
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                     color: Colors.white,
-                    letterSpacing: -0.8,
+                    letterSpacing: 0.2,
                     height: 1.2,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 8),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Icon(
-                          Icons.location_on_rounded,
-                          color: Colors.white,
-                          size: 12,
-                        ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2.0),
+                      child: Icon(
+                        Icons.location_on_rounded,
+                        size: 16,
+                        color: Color(0xFFA773F7),
                       ),
-                      SizedBox(width: 8),
-                      Flexible(
-                        child: Text(
-                          professionalAddress.isNotEmpty ? professionalAddress : "Location not available",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: -0.2,
-                          ),
+                    ),
+                    SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        professionalAddress.isNotEmpty ? professionalAddress : "Location not available",
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.8),
+                          fontSize: 14,
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w400,
+                          height: 1.4,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -1796,6 +1762,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
                 onPressed: _isBooking
                     ? null
                     : () {
+                        if (ConstantVariable.authToken == null || ConstantVariable.authToken!.isEmpty) {
+                          LoginPrompt.show(context);
+                          return;
+                        }
                         setState(() {
                           _isBooking = true;
                         });
