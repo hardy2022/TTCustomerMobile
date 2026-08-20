@@ -1178,11 +1178,13 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
   }
 
   Widget _buildHeader() {
-    // Get customer name, fallback to "Guest" if not available
-    String customerName = ConstantVariable.userName?.isNotEmpty == true
-        ? ConstantVariable.userName!
-        : "Guest";
-    
+    String customerName = "Guest";
+    if (ConstantVariable.userName != null && ConstantVariable.userName!.isNotEmpty) {
+      customerName = ConstantVariable.userName!;
+    } else if (loginName != null && loginName!.isNotEmpty) {
+      customerName = loginName!;
+    }
+
     return Container(
       margin: const EdgeInsets.only(top: 8),
       child: Row(
@@ -2655,15 +2657,7 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                           width: 4,
                           height: 20,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                            color: Color(0xFFA773F7),
                             borderRadius: BorderRadius.circular(2),
                           ),
                         ),
@@ -3158,15 +3152,7 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                                 width: 4,
                                 height: 20,
                                 decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFA773F7),
-            Colors.black,
-            Colors.black,
-          ],
-        ),
+                                  color: Color(0xFFA773F7),
                                   borderRadius: BorderRadius.circular(2),
                                 ),
                               ),

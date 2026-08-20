@@ -8,6 +8,7 @@ import '../register.dart';
 import 'BLOC/APIBloC.dart';
 import 'account_verification.dart';
 import 'forgot_password.dart';
+import 'home_screen_content.dart';
 import 'home_screen.dart';
 import 'main.dart';
 
@@ -60,6 +61,8 @@ class _TrendTodayLoginState extends State<TrendTodayLogin> {
         setState(() {
           _isLoading = false;
         });
+
+        HomeScreenContentDemo.globalKey.currentState?.getUserProfile(context);
 
         Navigator.pushAndRemoveUntil(
           context,
@@ -364,6 +367,7 @@ class _TrendTodayLoginState extends State<TrendTodayLogin> {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () {
+                    HomeScreenContentDemo.globalKey.currentState?.getUserProfile(context);
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
