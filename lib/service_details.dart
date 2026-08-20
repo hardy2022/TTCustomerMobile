@@ -483,7 +483,9 @@ class _GlowHomePageState extends State<GlowHomePage> {
     }
 
     try {
-      _isLoadingWorkingHours = true;
+      setState(() {
+        _isLoadingWorkingHours = true;
+      });
       _lastWorkingHoursCall = now;
 
       // Validate inputs before making the API call
@@ -560,11 +562,12 @@ class _GlowHomePageState extends State<GlowHomePage> {
       print('Error in working hours request: $e');
       _handleWorkingHoursError();
     } finally {
-      _isLoadingWorkingHours = false;
-      // Ensure we're not in a loading state
-      if (mounted && _isLoading) {
+      if (mounted) {
         setState(() {
-          _isLoading = false;
+          _isLoadingWorkingHours = false;
+          if (_isLoading) {
+            _isLoading = false;
+          }
         });
       }
     }
@@ -1560,10 +1563,10 @@ class _GlowHomePageState extends State<GlowHomePage> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         child: Text(
-                          'Closed',
+                          'No time slots available for this date.',
                           style: TextStyle(
                             color: Colors.red,
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.w600,
                             fontFamily: "Poppins",
                           ),
