@@ -1520,31 +1520,55 @@ class _GlowHomePageState extends State<GlowHomePage> {
                   SizedBox(height: 16),
             _buildDatePicker(),
                   SizedBox(height: 16),
-                  if (timeSlots.isNotEmpty)
+                  if (_isLoadingWorkingHours)
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: CircularProgressIndicator(
+                          color: Color(0xFFA773F7),
+                        ),
+                      ),
+                    )
+                  else if (timeSlots.isNotEmpty)
                     GridView.builder(
-                  itemCount: timeSlots!.length,
+                      itemCount: timeSlots!.length,
                       physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 4,
                         mainAxisSpacing: 10.0,
                         crossAxisSpacing: 10.0,
                         childAspectRatio: 2.8,
-                  ),
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedIndex1 = index;
-                          _selectedTimeValue = timeSlots[index];
-                        });
-                      },
-                      child: TimeSlotItem(
-                        time: timeSlots[index],
-                            isSelected: selectedIndex1 == index,
                       ),
-                    );
-                  },
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex1 = index;
+                              _selectedTimeValue = timeSlots[index];
+                            });
+                          },
+                          child: TimeSlotItem(
+                            time: timeSlots[index],
+                            isSelected: selectedIndex1 == index,
+                          ),
+                        );
+                      },
+                    )
+                  else
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20.0),
+                        child: Text(
+                          'Closed',
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: "Poppins",
+                          ),
+                        ),
+                      ),
                     ),
                 ],
               ),
@@ -2055,8 +2079,7 @@ class _GlowHomePageState extends State<GlowHomePage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(errorMessage),
-        backgroundColor: Colors.red,
-        // Set the background color to red to indicate error
+        backgroundColor: Colors.black,
         action: SnackBarAction(
           label: 'Dismiss',
           textColor: Colors.white,
