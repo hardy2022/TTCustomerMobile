@@ -27,6 +27,7 @@ class AppointmentGridView extends StatelessWidget {
     required this.time,
     required this.date,
     required this.image,
+    this.fallbackImage,
     required this.address,
   });
 
@@ -34,6 +35,7 @@ class AppointmentGridView extends StatelessWidget {
   final String time;
   final String date;
   final String image;
+  final String? fallbackImage;
   final String? address;
 
   @override
@@ -49,33 +51,62 @@ class AppointmentGridView extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(16), // Match the parent container's radius
             child: (image.isNotEmpty)
-                ? /*Image.network(
-              image,
-              width: MediaQuery.of(context).size.width,
-              height: double.infinity, // Ensures full height coverage
-              fit: BoxFit.cover, // Ensures image covers the whole container
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Center(child: CircularProgressIndicator());
-              },
-              errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
-            )*/
-            CachedNetworkImage(
+                ? CachedNetworkImage(
               imageUrl: image,
               width: MediaQuery.of(context).size.width,
               height: double.infinity, // Ensures full height coverage
               fit: BoxFit.cover,       // Ensures image covers the whole container
               placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(color: Color(0xFFA773F7)),
               ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
+              errorWidget: (context, url, error) {
+                if (fallbackImage != null && fallbackImage!.isNotEmpty) {
+                  return CachedNetworkImage(
+                    imageUrl: fallbackImage!,
+                    width: MediaQuery.of(context).size.width,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(color: Color(0xFFA773F7)),
+                    ),
+                    errorWidget: (context, url, error) => Image.asset(
+                      'assets/images/nl.png',
+                      width: MediaQuery.of(context).size.width,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                }
+                return Image.asset(
+                  'assets/images/nl.png',
+                  width: MediaQuery.of(context).size.width,
+                  height: double.infinity,
+                  fit: BoxFit.cover,
+                );
+              },
             )
-                : Image.asset(
-              'assets/images/nl.png',
-              width: MediaQuery.of(context).size.width,
-              height: double.infinity,
-              fit: BoxFit.cover,
-            ),
+                : (fallbackImage != null && fallbackImage!.isNotEmpty)
+                  ? CachedNetworkImage(
+                      imageUrl: fallbackImage!,
+                      width: MediaQuery.of(context).size.width,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(color: Color(0xFFA773F7)),
+                      ),
+                      errorWidget: (context, url, error) => Image.asset(
+                        'assets/images/nl.png',
+                        width: MediaQuery.of(context).size.width,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : Image.asset(
+                      'assets/images/nl.png',
+                      width: MediaQuery.of(context).size.width,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
           ),
 
           // Bottom content: rating and name
@@ -87,7 +118,7 @@ class AppointmentGridView extends StatelessWidget {
               height: 70, // Adjust height as needed
               padding: EdgeInsets.all(8.0), // Add some padding
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
+                color: Colors.black, // Solid black background instead of translucent
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),
                   bottomRight: Radius.circular(16),

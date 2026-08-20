@@ -3211,10 +3211,10 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                     // Ensures no internal padding
                     physics: ScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 10.0, // Spacing between rows
-                      crossAxisSpacing: 10.0, // Spacing between columns
-                      childAspectRatio: 0.8,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 12.0, // Spacing between rows
+                      crossAxisSpacing: 12.0, // Spacing between columns
+                      childAspectRatio: 0.85,
                     ),
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
@@ -3236,6 +3236,7 @@ class _HomeScreenContentDemoState extends State<HomeScreenContentDemo> {
                                 ? _allFilteredProfessionals![index]
                                     .profile_image!
                                 : "",
+                            fallbackImage: _allFilteredProfessionals![index].logo,
                             address:
                                 _allFilteredProfessionals![index].location !=
                                             null &&
