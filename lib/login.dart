@@ -301,7 +301,8 @@ class _TrendTodayLoginState extends State<TrendTodayLogin> {
                             'Email Address', 
                             Icons.alternate_email_outlined, 
                             emailEditingController, 
-                            _formKey
+                            _formKey,
+                            autofocus: true
                           ),
                           SizedBox(height: 12),
                           _buildTextFormField(
@@ -418,7 +419,7 @@ class _TrendTodayLoginState extends State<TrendTodayLogin> {
 
   Widget _buildTextFormField(String label, IconData icon,
       TextEditingController controller, GlobalKey<FormState> _formKey,
-      {bool isPassword = false}) {
+      {bool isPassword = false, bool autofocus = false}) {
     return Container(
       decoration: BoxDecoration(
         color: Color(0xFFF9FAFB),
@@ -429,6 +430,7 @@ class _TrendTodayLoginState extends State<TrendTodayLogin> {
         ),
       ),
       child: TextFormField(
+        autofocus: autofocus,
         obscureText: isPassword,
         controller: controller,
         style: TextStyle(

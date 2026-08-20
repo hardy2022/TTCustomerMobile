@@ -649,10 +649,73 @@ class _GlowHomePageState extends State<GlowHomePage> {
         _isBooking = false;
         if (value?.message == null) {
           print("Resssponnnssee1112222${(value?.vendor_id.toString())!}");
-          Navigator.pop(context);
-          Future.delayed(const Duration(milliseconds: 100), () {
-            BottomTabBar.selectFourthTab();
-          });
+          
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext dialogContext) {
+              return Dialog(
+                backgroundColor: Color(0xFF1E1E1E),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                child: Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.check_circle_outline_rounded, color: Colors.greenAccent, size: 64),
+                      SizedBox(height: 16),
+                      Text(
+                        'Booking Successful!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      Text(
+                        'Your service has been successfully booked.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 14,
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                      SizedBox(height: 24),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFFA773F7),
+                            padding: EdgeInsets.symmetric(vertical: 14),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(dialogContext); // Close dialog
+                            Navigator.pop(context); // Close GlowHomePage
+                            Future.delayed(const Duration(milliseconds: 100), () {
+                              BottomTabBar.selectFourthTab();
+                            });
+                          },
+                          child: Text(
+                            'Go to Bookings',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              fontFamily: "Poppins",
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
         } else {
           // Show error message from API
           String errorMessage = value?.message ?? 'Failed to book service. Please try again.';
