@@ -552,6 +552,8 @@ class _GlowHomePageState extends State<GlowHomePage> {
           setState(() {
             timeSlots = availableSlots;
             isSelected = List<bool>.filled(timeSlots.length, false);
+            _selectedTimeValue = "";
+            selectedIndex1 = -1;
           });
         }
       } else {
@@ -578,6 +580,8 @@ class _GlowHomePageState extends State<GlowHomePage> {
       setState(() {
         timeSlots = [];
         isSelected = [];
+        _selectedTimeValue = "";
+        selectedIndex1 = -1;
       });
       // Show error to user
       showErrorSnackbar(
@@ -590,6 +594,8 @@ class _GlowHomePageState extends State<GlowHomePage> {
       setState(() {
         timeSlots = [];
         isSelected = [];
+        _selectedTimeValue = "";
+        selectedIndex1 = -1;
       });
 
       // Show appropriate message based on selected date
@@ -1449,15 +1455,21 @@ class _GlowHomePageState extends State<GlowHomePage> {
                                   GlowHomePage.serviceListSelection[index] =
                                       !GlowHomePage.serviceListSelection[index];
 
-                                  print(
-                                      "GlowHomePage.serviceListSelection[index] " +
-                                          GlowHomePage.serviceListSelection[index]
-                                              .toString());
-                                  if (GlowHomePage.serviceListSelection[index] ==
-                                      true) {
-                                    _selectedServices.add((serviceList![index]
-                                        .service_id
-                                        .toString())!);
+                                  String sId = serviceList![index].service_id.toString();
+                                  if (GlowHomePage.serviceListSelection[index] == true) {
+                                    if (!_selectedServices.contains(sId)) {
+                                      _selectedServices.add(sId);
+                                    }
+                                  } else {
+                                    _selectedServices.remove(sId);
+                                  }
+
+                                  if (_selectedServices.isNotEmpty) {
+                                    _selectedServiceId = _selectedServices.last;
+                                    final formattedDate = DateConverter.convertDateFormat1(
+                                        (_selectedDateValue ?? DateTime.now()).toString().split(" ")[0]);
+                                    getVendorWorkingHours(context, copyVendorId.toString(),
+                                        formattedDate, _selectedServiceId);
                                   }
                                 });
                               },
@@ -1860,10 +1872,31 @@ class _GlowHomePageState extends State<GlowHomePage> {
                         setState(() {
                           _isBooking = true;
                         });
-                        if (_selectedDateValue != null &&
-                            _selectedTimeValue != null &&
-                            _selectedTimeValue.length != 0 &&
-                            _selectedServices.isNotEmpty) {
+                        if (_selectedServices.isEmpty) {
+                          setState(() {
+                            _isBooking = false;
+                          });
+                          showErrorSnackbar(context, 'Please select a service');
+                          return;
+                        }
+
+                        if (_selectedDateValue == null) {
+                          setState(() {
+                            _isBooking = false;
+                          });
+                          showErrorSnackbar(context, 'Please select a date');
+                          return;
+                        }
+
+                        if (_selectedTimeValue == null || _selectedTimeValue.isEmpty) {
+                          setState(() {
+                            _isBooking = false;
+                          });
+                          showErrorSnackbar(context, 'Please select a time slot');
+                          return;
+                        }
+
+                        if (true) {
                           // Validate that the selected date and time are not in the past
                           try {
                             DateTime now = DateTime.now();
@@ -1906,14 +1939,18 @@ class _GlowHomePageState extends State<GlowHomePage> {
                             
                             // Check if the appointment time is in the past
                             if (appointmentDateTime.isBefore(now)) {
-                              _isBooking = false;
+                              setState(() {
+                                _isBooking = false;
+                              });
                               showErrorSnackbar(
                                   context, 'Service date and time cannot be in the past. Please select a future date and time.');
                               return;
                             }
                           } catch (e) {
                             print('Error validating date and time: $e');
-                            _isBooking = false;
+                            setState(() {
+                              _isBooking = false;
+                            });
                             showErrorSnackbar(
                                 context, 'Invalid date or time format. Please try again.');
                             return;
@@ -1959,10 +1996,6 @@ class _GlowHomePageState extends State<GlowHomePage> {
                               ),
                             );
                           }
-                        } else {
-                          _isBooking = false;
-                          showErrorSnackbar(
-                              context, 'Please select date and time slot');
                         }
                       },
                 child: _isBooking
@@ -3138,6 +3171,8 @@ class _GlowHomePageState extends State<GlowHomePage> {
                   _selectedDateValue = date;
                   timeSlots = [];
                   isSelected = [];
+                  _selectedTimeValue = "";
+                  selectedIndex1 = -1;
                   if (_selectedServiceId.isNotEmpty) {
                     final formattedDate = DateConverter.convertDateFormat1(
                         date.toString().split(" ")[0]);
